@@ -1,4 +1,3 @@
-import mainR from "./main";
-export default {
-    mainR
-}
+var mainR = require("./main");
+module.exports = mainR;
+    

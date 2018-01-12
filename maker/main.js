@@ -1,10 +1,10 @@
 //求两点之间的直线距离
-export const getDistance = function (p1, p2) {
+const getDistance = function (p1, p2) {
     let result = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
     return result;
 }
 //求p2点相对于p1点的旋转角度
-export const getRoate = function (p1, p2) {
+const getRoate = function (p1, p2) {
     let offsetX = (p2.x - p1.x);
     let offsetY = (p2.y - p1.y);
     let k = offsetY / offsetX;  //斜率
@@ -20,7 +20,7 @@ export const getRoate = function (p1, p2) {
     return t;
 }
 //以点p1,p2为中线点，r为半径的矩形四个点
-export const getPoint = function (p1, p2, r) {
+const getPoint = function (p1, p2, r) {
     let offsetX = (p2.x - p1.x);
     let offsetY = (p2.y - p1.y);
     let k = offsetY / offsetX;  //斜率
@@ -57,7 +57,7 @@ export const getPoint = function (p1, p2, r) {
     return { p11, p12, p21, p22 };
 }
   //判断一个点是否在一条直线上
-export const iSInside = function (line, p) {
+const iSInside = function (line, p) {
     let lengthLine = getDistance(line.p1, line.p2);
     let lengthP1 = getDistance(line.p1, p);
     let lengthP2 = getDistance(line.p2, p);
@@ -71,7 +71,7 @@ export const iSInside = function (line, p) {
     return false;
 }
   //获取点到线段的垂线与线段的交点；
-export const getIntersectionOfLineAndDot = function (line1, p) {
+const getIntersectionOfLineAndDot = function (line1, p) {
 
     let k1 = (line1.p2.y - line1.p1.y) / (line1.p2.x - line1.p1.x);
     if (Math.abs(k1) == Infinity) { k1 = Infinity }
@@ -100,7 +100,7 @@ export const getIntersectionOfLineAndDot = function (line1, p) {
     return { x: Math.round(x), y: Math.round(y) };
 }
 //求两条直线的交点
-export const getIntersectionOfLineAndLine = function (line1, line2) {
+const getIntersectionOfLineAndLine = function (line1, line2) {
     let k1 = (line1.p2.y - line1.p1.y) / (line1.p2.x - line1.p1.x);
     if (Math.abs(k1) == Infinity) { k1 = Infinity }
     let b1 = line1.p1.y - k1 * line1.p1.x;
@@ -156,7 +156,7 @@ export const getIntersectionOfLineAndLine = function (line1, line2) {
     return { x: Math.round(x), y: Math.round(y) };
 }
   //求过圆心直线于圆的交点 circle(o,r)
-export const getIntersectionOfCirleAndLine = function (circle, line) {
+const getIntersectionOfCirleAndLine = function (circle, line) {
     //y = kx +b
     let k = line.k;
     let b = line.b;
@@ -182,7 +182,7 @@ export const getIntersectionOfCirleAndLine = function (circle, line) {
     return { p1, p2 }
 }
 //获点到直线的距离
-export const getDistanceOfDotToLine = function (dot, line) {
+const getDistanceOfDotToLine = function (dot, line) {
     let k1 = (line.p2.y - line.p1.y) / (line.p2.x - line.p1.x);
     let b1 = line.p1.y - k1 * line.p1.x;
     let k2 = - 1 / k1; // 垂直直线，斜率乘积为-1
@@ -204,7 +204,7 @@ export const getDistanceOfDotToLine = function (dot, line) {
     return distance;
 }
   //获取一条直线上，距离起点一段距离的点
-export const getLineDistanceDot = function (start, end, distance) {
+const getLineDistanceDot = function (start, end, distance) {
     let percent = distance/(getDistance(start,end));
     return {
       x: start.x + (end.x - start.x) * percent,
@@ -212,21 +212,21 @@ export const getLineDistanceDot = function (start, end, distance) {
     }
 };
 //根据一点，角度，距离，求另一点的坐标；
-export const getLineEndDot = function (start, angle, distance) {
+const getLineEndDot = function (start, angle, distance) {
     return {
       x: Math.round(start.x + Math.cos(angle * Math.PI / 180) * distance),
       y: Math.round(start.y + Math.sin(angle * Math.PI / 180) * distance)
     }
 };
 //获取一条线段的中点
-export const getMidOffline = function (line) {
+const getMidOffline = function (line) {
     return {
       x: line.p1.x + (line.p2.x - line.p1.x) / 2,
       y: line.p1.y + (line.p2.y - line.p1.y) / 2
     }
 }
 //判断两点是否在一条直线的同一侧
-export const judgeTwoPointInLineIpsilateral  = function(p1,p2,line){
+const judgeTwoPointInLineIpsilateral  = function(p1,p2,line){
     let k = (line.p2.y - line.p1.y)/(line.p2.x - line.p1.x);
     if(Math.abs(k) == Infinity){
       if((p1.x - line.p1.x)*(p2.x - line.p1.x)>0){
@@ -248,7 +248,7 @@ export const judgeTwoPointInLineIpsilateral  = function(p1,p2,line){
       return false;
     }
 }
-export default {
+module.exports = {
     getDistance,
     getRoate,
     getPoint,
