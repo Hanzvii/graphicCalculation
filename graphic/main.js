@@ -70,7 +70,7 @@ const iSInside = function (line, p) {
     }
     return false;
 }
-  //获取点到线段的垂线与线段的交点；
+//获取点到线段的垂线与线段的交点；
 const getIntersectionOfLineAndDot = function (line1, p) {
 
     let k1 = (line1.p2.y - line1.p1.y) / (line1.p2.x - line1.p1.x);
