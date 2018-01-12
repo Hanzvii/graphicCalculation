@@ -1,2 +1,2 @@
-var maker = require("./maker");
+var maker = require("./graphic");
 module.exports = maker;
